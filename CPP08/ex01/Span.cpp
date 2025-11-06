@@ -6,7 +6,7 @@
 /*   By: mfrancis <mfrancis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 18:34:38 by mfrancis          #+#    #+#             */
-/*   Updated: 2025/11/06 17:14:50 by mfrancis         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:42:31 by mfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int Span::longestSpan() const
 
 void Span::addMultipleNumber(size_t add)
 {
+    srand(time(NULL));
     if(storage.size() + add > vSize)
         throw std::runtime_error("The number of element will exceed the capacity!");
     
