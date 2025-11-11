@@ -1,9 +1,9 @@
-NAME = converter
+NAME =  mutantStack
 
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror -g
 
-SRC = main.cpp ScalarConverter.cpp converter.cpp
+SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
