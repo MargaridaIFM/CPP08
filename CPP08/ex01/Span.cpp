@@ -6,7 +6,7 @@
 /*   By: mfrancis <mfrancis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 18:34:38 by mfrancis          #+#    #+#             */
-/*   Updated: 2025/11/06 17:42:31 by mfrancis         ###   ########.fr       */
+/*   Updated: 2026/02/18 10:42:00 by mfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,24 @@ void Span::addNumber(int nbr)
     storage.push_back(nbr);
 }
 
+// CPP08/ex01/Span.cpp
+
 int Span::shortestSpan() const
 {
-    if(storage.size() <= 1)
+    if (storage.size() <= 1)
         throw std::runtime_error("Not enougth elements!");
-    
-    std::vector<int> copy = storage;
 
+    std::vector<int> copy = storage;
     std::sort(copy.begin(), copy.end());
 
-    int small = std::numeric_limits<int>::max();
-    for(size_t i = 0; i < copy.size(); i ++)
+    long long small = std::numeric_limits<long long>::max();
+    for (size_t i = 0; i + 1 < copy.size(); ++i)
     {
-        int diff = copy[i] - copy[i + 1];
-        if(diff < small)
+        long long diff = static_cast<long long>(copy[i + 1]) - copy[i]; // >= 0 (sorted)
+        if (diff < small)
             small = diff;
     }
-    return (small);
+    return static_cast<int>(small);
 }
 
 int Span::longestSpan() const
