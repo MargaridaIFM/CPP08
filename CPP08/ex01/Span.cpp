@@ -12,16 +12,19 @@
 
 #include "Span.hpp"
 
+// Stores the maximum number of elements n; storage starts empty.
 Span::Span(unsigned int n):vSize(n)
 {
     std::cout << "Construter Called" << std::endl;
 }
 
+// Deep-copies the capacity and the numbers already stored in copy.
 Span::Span(const Span &copy): vSize(copy.vSize), storage(copy.storage)
 {
     std::cout << "Copy Construter Called" << std::endl;
 }
 
+// Replaces this Span's capacity and numbers with copy's.
 Span &Span::operator=(const Span &copy)
 {
     if(this != &copy)
@@ -32,11 +35,13 @@ Span &Span::operator=(const Span &copy)
     std::cout << "Copy Assigment Construter Called" << std::endl;
     return(*this);
 }
+
 Span::~Span()
 {
     std::cout << "Destruter Called" << std::endl;
 }
 
+// Appends nbr if there is still room, otherwise signals the Span is full.
 void Span::addNumber(int nbr)
 {
     if(storage.size() >= vSize)
@@ -44,8 +49,8 @@ void Span::addNumber(int nbr)
     storage.push_back(nbr);
 }
 
-// CPP08/ex01/Span.cpp
-
+// Sorts a copy of the stored numbers and looks for the smallest gap
+// between two consecutive values, which is the shortest possible span.
 int Span::shortestSpan() const
 {
     if (storage.size() <= 1)
@@ -64,31 +69,19 @@ int Span::shortestSpan() const
     return static_cast<int>(small);
 }
 
+// Finds the smallest and largest stored values and returns their difference.
 int Span::longestSpan() const
 {
     if(storage.size() <= 1)
         throw std::runtime_error("Not enougth elements!");
-    
+
     int minNbr = *std::min_element(storage.begin(), storage.end());
     int maxNbr = *std::max_element(storage.begin(), storage.end());
 
     return(maxNbr - minNbr);
 }
-   
 
-void Span::addMultipleNumber(size_t add)
-{
-    srand(time(NULL));
-    if(storage.size() + add > vSize)
-        throw std::runtime_error("The number of element will exceed the capacity!");
-    
-    for(size_t i = 0; i < add ;i++)
-    {
-        int n = std::rand();
-        addNumber(n);
-    }
-}
-
+// Prints every stored number, one per line.
 void Span::printNbrs() const
 {
     for(size_t i = 0; i < storage.size(); i++)

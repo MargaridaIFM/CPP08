@@ -17,7 +17,6 @@
 #include <iostream>
 #include <vector>
 #include <exception>
-#include <ctime>
 #include <limits>
 
 class Span
@@ -25,19 +24,32 @@ class Span
     private:
         unsigned int vSize;
         std::vector<int> storage;
-   
+
     public:
+        /// Builds a Span able to hold at most n integers.
         Span(unsigned int n);
+        /// Copy constructor: duplicates the capacity and stored numbers.
         Span(const Span &copy);
+        /// Copy assignment: replaces capacity and stored numbers.
         Span &operator=(const Span &copy);
+        /// Destructor.
         ~Span();
-        
+
+        /// Adds a single number to the Span. Throws if the Span is already full.
         void addNumber(int nbr);
+        /// Returns the smallest distance between any two stored numbers. Throws if fewer than 2 numbers are stored.
         int shortestSpan() const;
+        /// Returns the largest distance between any two stored numbers. Throws if fewer than 2 numbers are stored.
         int longestSpan() const;
 
-        void addMultipleNumber(size_t add);
+        /// Adds every number in [first, last) to the Span in a single call. Throws if it would exceed the capacity.
+        template <typename InputIterator>
+        void addRange(InputIterator first, InputIterator last);
+
+        /// Prints every stored number, one per line.
         void printNbrs() const;
 };
+
+#include "Span.tpp"
 
 #endif

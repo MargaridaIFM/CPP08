@@ -24,15 +24,22 @@ template <typename T>
 class  MutantStack: public std::stack <T>
 {
     public:
+        /// Default constructor: starts as an empty stack.
         MutantStack();
+        /// Copy constructor: duplicates every element of copy.
         MutantStack(const MutantStack &copy);
+        /// Copy assignment: replaces this stack's elements with copy's.
         MutantStack &operator=(const MutantStack &copy);
+        /// Destructor.
         ~MutantStack();
 
+        /// Iterator type exposed on top of std::stack's underlying container.
         typedef typename std::deque<T>::iterator iterator;
 
+        /// Iterator to the bottom element of the stack (oldest pushed element).
         iterator begin();
-	    iterator end();
+        /// Iterator past the top element of the stack.
+        iterator end();
 };
 
 #include  "MutantStack.tpp" 
