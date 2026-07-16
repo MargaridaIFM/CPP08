@@ -35,6 +35,19 @@ int main()
         std::cout << "Error: " << e.what() << std::endl;
     }
 
+    // A default-built Span has no capacity, so it only becomes usable
+    // once another Span is assigned to it.
+    try
+    {
+        Span empty;
+        std::cout << "\nDefault Span:" << std::endl;
+        empty.addNumber(1);
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
+
     // Filling a Span from a range of iterators in a single call.
     try
     {

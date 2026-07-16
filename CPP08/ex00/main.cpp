@@ -14,7 +14,7 @@
 
 int main()
 {
-    std::cout << "Testing with vectors:";
+    std::cout << "Testing with vectors:" << std::endl;
     std::vector<int> nbrs;
     for (int i = 0; i < 10; i++)
         nbrs.push_back(i * 10);
@@ -31,7 +31,7 @@ int main()
     {
         std::cerr << e.what() << std::endl;
     }
-    std::cout << "Testing with lists:";
+    std::cout << "Testing with lists:" << std::endl;
     std::list<int> listNbr;
     for (int i = 0; i < 10; i++)
         listNbr.push_back(i * 10);

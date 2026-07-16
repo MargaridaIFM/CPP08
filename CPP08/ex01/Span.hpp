@@ -26,6 +26,8 @@ class Span
         std::vector<int> storage;
 
     public:
+        /// Default constructor: builds a Span with no capacity at all.
+        Span();
         /// Builds a Span able to hold at most n integers.
         Span(unsigned int n);
         /// Copy constructor: duplicates the capacity and stored numbers.

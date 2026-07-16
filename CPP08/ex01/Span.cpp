@@ -12,6 +12,13 @@
 
 #include "Span.hpp"
 
+// Capacity of 0: any addNumber() on such a Span throws until it is
+// assigned a Span built with a real capacity.
+Span::Span(): vSize(0)
+{
+    std::cout << "Default Construter Called" << std::endl;
+}
+
 // Stores the maximum number of elements n; storage starts empty.
 Span::Span(unsigned int n):vSize(n)
 {
@@ -59,10 +66,13 @@ int Span::shortestSpan() const
     std::vector<int> copy = storage;
     std::sort(copy.begin(), copy.end());
 
-    long long small = std::numeric_limits<long long>::max();
+    unsigned int small = std::numeric_limits<unsigned int>::max();
     for (size_t i = 0; i + 1 < copy.size(); ++i)
     {
-        long long diff = static_cast<long long>(copy[i + 1]) - copy[i]; // >= 0 (sorted)
+        // Unsigned arithmetic: the vector is sorted, so the gap is never negative
+        // and always fits in an unsigned int, even for INT_MIN..INT_MAX.
+        unsigned int diff = static_cast<unsigned int>(copy[i + 1])
+            - static_cast<unsigned int>(copy[i]);
         if (diff < small)
             small = diff;
     }
