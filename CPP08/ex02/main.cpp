@@ -83,4 +83,16 @@ int main()
 		std::cout << *it3 << std::endl;
 		++it3;
 	}
+
+	// Extra: reverse iterators walk the MutantStack from the top element
+	// down to the bottom one, the opposite order of the loop above.
+	std::cout << "Using MutantStack Reversed Now" << std::endl;
+
+	MutantStack<int>::reverse_iterator rit = mstack.rbegin();
+	MutantStack<int>::reverse_iterator rite = mstack.rend();
+	while (rit != rite)
+	{
+		std::cout << *rit << std::endl;
+		++rit;
+	}
 }

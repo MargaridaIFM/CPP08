@@ -6,7 +6,7 @@
 /*   By: mfrancis <mfrancis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:51:09 by mfrancis          #+#    #+#             */
-/*   Updated: 2025/11/11 16:44:52 by mfrancis         ###   ########.fr       */
+/*   Updated: 2026/07/16 18:05:01 by mfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include <algorithm>
-#include <exception>
 #include <vector>
 #include <list>
 #include <stack>
@@ -35,11 +34,18 @@ class  MutantStack: public std::stack <T>
 
         /// Iterator type exposed on top of std::stack's underlying container.
         typedef typename std::deque<T>::iterator iterator;
+        /// Same, walking the stack from the top element down to the bottom one.
+        typedef typename std::deque<T>::reverse_iterator reverse_iterator;
 
         /// Iterator to the bottom element of the stack (oldest pushed element).
         iterator begin();
         /// Iterator past the top element of the stack.
         iterator end();
+
+        /// Reverse iterator to the top element of the stack.
+        reverse_iterator rbegin();
+        /// Reverse iterator past the bottom element of the stack.
+        reverse_iterator rend();
 };
 
 #include  "MutantStack.tpp" 

@@ -6,7 +6,7 @@
 /*   By: mfrancis <mfrancis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:51:05 by mfrancis          #+#    #+#             */
-/*   Updated: 2025/11/10 17:30:08 by mfrancis         ###   ########.fr       */
+/*   Updated: 2026/07/16 18:05:47 by mfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,15 @@ template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::end()
 {
     return(this->c.end());
+}
+
+template <typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin()
+{
+    return(this->c.rbegin());
+}
+template <typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rend()
+{
+    return(this->c.rend());
 }

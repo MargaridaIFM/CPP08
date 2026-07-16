@@ -37,5 +37,10 @@
 *.out
 *.app
 
+# Executables built by this module's Makefiles (no extension to match on)
+easyfind
+span
+mutantStack
+
 # debug information files
 *.dwo

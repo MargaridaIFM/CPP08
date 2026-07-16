@@ -17,7 +17,7 @@
 #include <algorithm>
 #include <vector>
 #include <list>
-#include <exception>
+#include <stdexcept>
 
 
 /// Finds the first occurrence of toFind in container.
